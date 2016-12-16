@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Nightly Triggers{% endblock %}
+
+{% block content %}
+   <div class="container-fluid">
+     <h3>Do you want to delete {{ data['TOPO_NAME'] }} ?</h3>
+
+     <form action="" method="post">
+            {{ form.csrf }}
+
+            <button type="submit" id="submit" name="submit" class="btn btn-success" value="delete">Confirm</button>
+            <button type="submit" id="submit" name="submit" class="btn btn-danger" value="no">Cancel</button>
+        </form> 
+   </div>
+{% endblock %}
+
+

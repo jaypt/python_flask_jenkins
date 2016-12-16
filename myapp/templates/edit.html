@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Nightly Triggers{% endblock %}
+
+{% block content %}
+   <div class="container-fluid">
+     <h3>{{ data['TOPO_NAME'] }}</h3>
+
+    <!--
+     {% with messages = get_flashed_messages(with_categories=true) %}
+       {% if messages %}
+        {% for message in messages %}
+            {% if "rror" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+ 
+            {% if "rror" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+       {% endif %}
+     {% endwith %}
+
+     <br>
+     -->
+
+     <form action="" method="post">
+            {{ form.csrf }}
+            <div class="form-group">
+
+              {% if form.data.ftype == 'add' %}
+                 <label for={{form.TOPO_NAME.label}}</label>
+                 <input type="text" class="form-control" id="TOPO_NAME" name="TOPO_NAME">
+              {% endif %}
+                
+              <label for={{form.email.label}}</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder={{ data['email'] }} value={{data['email']}}>
+
+              <label for={{form.TRIGGER_TYPE.label}}</label>
+              <select class="form-control" id="TRIGGER_TYPE", name="TRIGGER_TYPE">
+              {% for trigger in TRIGGER_TYPES %}
+               {% if trigger == data['TRIGGER_TYPE'] %} 
+                 <option selected>{{ trigger }}</option>
+               {% else %}
+                 <option>{{ trigger }}</option>
+               {% endif %}
+              {% endfor %}
+              </select>
+
+              <label for={{form.node.label}}</label>
+              <input type="text" class="form-control" id="node" name="node" placeholder={{ data['node'] }} value={{data['node'] }}>
+
+              <label for={{form.status.label}}</label>
+              <select class="form-control" id="status", name="status">
+              {% for stat in all_status %}
+               {% if stat == data['status'] %} 
+                 <option selected>{{ stat }}</option>
+               {% else %}
+                 <option>{{ stat }}</option>
+               {% endif %}
+              {% endfor %}
+              </select>
+
+
+              <br>
+ 
+ 
+            </div>
+            <button type="submit" id="submit" name="submit" class="btn btn-success" value="got the value">Submit</button>
+
+        </form> 
+   
+     <br>
+
+
+   </div>
+{% endblock %}
+
+

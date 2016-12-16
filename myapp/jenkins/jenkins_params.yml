@@ -1,0 +1,13 @@
+
+---
+port: 22
+credentials: 7a1be63c-76d1-4df1-b993-9b65e0f4a691
+maxNumRetries: 0
+retryWaitTime: 0
+numExecutors: 2
+nodeDescription: None
+remoteFS: /local
+labels: None
+exclusive: False
+
+

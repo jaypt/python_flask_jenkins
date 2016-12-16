@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Nightly Triggers{% endblock %}
+
+{% block content %}
+   <div class="table-responsive">
+       <table class="table table-striped">
+         <thead>
+           <tr>
+             <th>Setup</th>
+             <th>email</th>
+             <th>Jenkins Node</th>
+             <th>Trigger Type</th>
+             <th>Status</th>
+             <th>    </th>
+           </tr>
+         </thead>
+         <tbody>
+          {% for setup in data %}
+            <tr>
+             <td><a href={{ job }}{{setup['TOPO_NAME']}}>{{setup['TOPO_NAME']}}</a></td>
+             <td>{{setup['email']}}</td>
+             <td>{{setup['node']}}</td>
+             <td>{{setup['TRIGGER_TYPE']}}</td>
+             <td>{{setup['status']}}</td>
+             <td>
+                <a href='/edit?setup={{setup['TOPO_NAME']}}'>Edit</a>
+                <a href='/delete?setup={{setup['TOPO_NAME']}}'>Delete</a>
+             </td>
+            </tr>
+          {% endfor %}
+
+         </tbody>
+       </table>
+     </div>
+     <div class="container-fluid">
+
+        <form action="" method="post">
+            {{ form.csrf }}
+
+            <button type="submit" id="submit" name="submit" class="btn btn-success" value="Add">Add</button>
+        </form> 
+     </div>
+{% endblock %}
+
+
